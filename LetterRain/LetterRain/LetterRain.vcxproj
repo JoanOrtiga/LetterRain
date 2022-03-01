@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -143,17 +143,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleController.cpp" />
-    <ClCompile Include="Managers\DrawManager.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="LetterRain.cpp" />
-    <ClCompile Include="Managers\TimeManager.cpp" />
+    <ClCompile Include="Code\ConsoleController.cpp" />
+    <ClCompile Include="Code\Managers\DrawManager.cpp" />
+    <ClCompile Include="Code\Game.cpp" />
+    <ClCompile Include="Code\LetterRain.cpp" />
+    <ClCompile Include="Code\Managers\TimeManager.cpp" />
+    <ClCompile Include="Code\Managers\UpdateManager.cpp" />
+    <ClCompile Include="Code\FallingLetters\FallingLetter.cpp" />
+    <ClCompile Include="Code\FallingLetters\FallingLettersController.cpp" />
+    <ClCompile Include="RandomGeneratorManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConsoleController.h" />
-    <ClInclude Include="Managers\DrawManager.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Managers\TimeManager.h" />
+    <ClInclude Include="Code\ConsoleController.h" />
+    <ClInclude Include="Code\Managers\DrawManager.h" />
+    <ClInclude Include="Code\Game.h" />
+    <ClInclude Include="Code\Managers\TimeManager.h" />
+    <ClInclude Include="Code\Managers\UpdateManager.h" />
+    <ClInclude Include="Code\FallingLetters\FallingLetter.h" />
+    <ClInclude Include="Code\FallingLetters\FallingLettersController.h" />
+    <ClInclude Include="RandomGeneratorManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,36 @@
+﻿  ConsoleController.cpp
+  DrawManager.cpp
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(9,29): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(10,30): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(11,32): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(12,33): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(14,28): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(15,30): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(17,32): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(18,33): warning C4309: 'inicializando': truncamiento de valor constante
+  Game.cpp
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(9,29): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(10,30): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(11,32): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(12,33): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(14,28): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(15,30): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(17,32): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(18,33): warning C4309: 'inicializando': truncamiento de valor constante
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(173,1): fatal error C1189: #error:  "No Target Architecture"
+  LetterRain.cpp
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(9,29): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(10,30): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(11,32): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(12,33): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(14,28): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(15,30): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(17,32): warning C4309: 'inicializando': truncamiento de valor constante
+D:\GAMEDEV\C++\Github\LetterRain\LetterRain\Code\Managers\DrawManager.h(18,33): warning C4309: 'inicializando': truncamiento de valor constante
+  TimeManager.cpp
+  UpdateManager.cpp
+  FallingLetter.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(173,1): fatal error C1189: #error:  "No Target Architecture"
+  FallingLettersController.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(173,1): fatal error C1189: #error:  "No Target Architecture"
+  Generando código...

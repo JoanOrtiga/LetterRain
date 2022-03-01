@@ -15,33 +15,57 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LetterRain.cpp">
+    <ClCompile Include="Code\LetterRain.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="Code\Game.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Managers\TimeManager.cpp">
+    <ClCompile Include="Code\Managers\TimeManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Managers\DrawManager.cpp">
+    <ClCompile Include="Code\Managers\DrawManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleController.cpp">
+    <ClCompile Include="Code\ConsoleController.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Managers\UpdateManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\FallingLetters\FallingLettersController.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\FallingLetters\FallingLetter.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGeneratorManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="Code\Game.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Managers\TimeManager.h">
+    <ClInclude Include="Code\Managers\TimeManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Managers\DrawManager.h">
+    <ClInclude Include="Code\Managers\DrawManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleController.h">
+    <ClInclude Include="Code\ConsoleController.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Managers\UpdateManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\FallingLetters\FallingLettersController.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\FallingLetters\FallingLetter.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGeneratorManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
