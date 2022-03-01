@@ -9,7 +9,7 @@ public:
 
 private:
 	clock_t lastFrameTime = clock();
-	int perFrameCycles = 60;
+	int perFrameCycles = 270;
 
 public:
 	TimeManager();

@@ -1,35 +1,48 @@
 ﻿#include "DrawManager.h"
 
 #include <iostream>
-#include <io.h>
-#include <fcntl.h>
+#include <iomanip>
 
+#include "../ConsoleController.h"
 
 DrawManager::DrawManager()
 {
+    DrawPlayField();
 }
 
 void DrawManager::Draw()
 {
-	DrawPlayField();
+    
+}
+
+
+void DrawManager::UpdateConsole()
+{
+    
 }
 
 void DrawManager::DrawPlayField()
 {
-	_setmode(_fileno(stdout), _O_U8TEXT);
-	//system("cls");
-	char32_t topLeftCorner = '\x2554';
+	std::cout << cornerTopLeft;
+	Fill(flatHorizontal, ConsoleController::consoleSizeX-1);
+	std::cout << cornerTopRight;
+	std::cout << flatVertical;
+	ConsoleController::SetCursorPosition(1,ConsoleController::consoleSizeX-1);
+	std::cout << flatVertical;
+	std::cout << verticalWithRight;
+	ConsoleController::SetCursorPosition(2, ConsoleController::consoleSizeX - 1);
+	std::cout << verticalWithLeft;
 
-	
-
-	wprintf(L"\x2554");
-	//Fill('═', 92);
-	//std::cout << '╗';
+	for (short i = 1; i < ConsoleController::consoleSizeY-1; i++)
+	{
+		
+	}
 }
 
 void DrawManager::Fill(char character, int fillAmount)
 {
-	std::cout.width(fillAmount);
-	std::cout.fill(character);
-	std::cout.width(0);
+	std::cout << std::setfill(character) << std::setw(fillAmount);
 }
+
+
+

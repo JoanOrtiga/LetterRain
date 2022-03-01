@@ -8,15 +8,19 @@ public:
 	
 
 private:
-	TimeManager timeManager;
-	DrawManager drawManager;
+	TimeManager* timeManager;
+	DrawManager* drawManager;
 	bool shouldDraw = false;
 
 public:
+	Game();
 	void Loop();
+
 private:
 	void TimeLogic();
 	void Update();
 	void Draw();
+	void Init();
+
 };
 

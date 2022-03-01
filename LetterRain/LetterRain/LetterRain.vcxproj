@@ -143,12 +143,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleController.cpp" />
     <ClCompile Include="Managers\DrawManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LetterRain.cpp" />
     <ClCompile Include="Managers\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleController.h" />
     <ClInclude Include="Managers\DrawManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Managers\TimeManager.h" />
