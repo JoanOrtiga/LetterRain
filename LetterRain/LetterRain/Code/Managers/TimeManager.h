@@ -5,6 +5,7 @@
 class TimeManager
 {
 public:
+	static TimeManager instance;
 	int elapsedTime = clock();
 
 private:

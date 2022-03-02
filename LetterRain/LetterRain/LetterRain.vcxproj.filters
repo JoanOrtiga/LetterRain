@@ -39,7 +39,10 @@
     <ClCompile Include="Code\FallingLetters\FallingLetter.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="RandomGeneratorManager.cpp">
+    <ClCompile Include="Code\Helper\RandomGeneratorManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Engine\IGameObject.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,7 +68,10 @@
     <ClInclude Include="Code\FallingLetters\FallingLetter.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="RandomGeneratorManager.h">
+    <ClInclude Include="Code\Helper\RandomGeneratorManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Engine\IGameObject.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

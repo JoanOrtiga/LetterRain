@@ -3,6 +3,8 @@
 #include <ctime>
 #include <iostream>
 
+TimeManager TimeManager::instance;
+
 TimeManager::TimeManager()
 {
 	elapsedTime = 0;

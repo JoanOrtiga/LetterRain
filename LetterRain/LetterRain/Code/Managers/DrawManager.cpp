@@ -64,5 +64,3 @@ void DrawManager::Fill(char character, int fillAmount)
 	std::cout << std::setfill(character) << std::setw(fillAmount-1) << character;
 }
 
-
-

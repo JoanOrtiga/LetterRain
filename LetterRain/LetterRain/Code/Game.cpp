@@ -17,7 +17,7 @@ void Game::Init() {
 
 	timeManager = new TimeManager();
 	drawManager = new DrawManager(fallingLettersController);
-	updateManager = new UpdateManager(fallingLettersController);
+	updateManager = new UpdateManager(fallingLettersController, timeManager);
 }
 
 Game::~Game()
@@ -43,7 +43,10 @@ void Game::TimeLogic() {
 }
 
 void Game::Update() {
-	updateManager->Update();
+	if (shouldDraw)
+	{
+		updateManager->Update();
+	}
 }
 
 void Game::Draw() {

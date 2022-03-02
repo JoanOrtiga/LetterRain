@@ -34,8 +34,5 @@ private:
 	static void HideCursor();
 	static void SetConsoleSize();
 	static bool HasConsoleChangedSize();
-
-
-
 };
 

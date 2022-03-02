@@ -2,8 +2,9 @@
 
 #include <vector>
 #include "FallingLetter.h"
+#include "../Engine/IGameObject.h"
 
-class FallingLettersController
+class FallingLettersController : public IGameObject
 {
 public:
 	
@@ -12,8 +13,9 @@ private:
 	
 public:
 	FallingLettersController();
-	void Update();
-	void Draw();
+	~FallingLettersController() override;
+	void Update() override;
+	void Draw() override;
 
 private:
 
