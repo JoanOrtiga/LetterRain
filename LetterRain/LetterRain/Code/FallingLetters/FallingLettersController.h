@@ -16,6 +16,7 @@ public:
 	~FallingLettersController() override;
 	void Update() override;
 	void Draw() override;
+	void SpawnNewLetter();
 
 private:
 

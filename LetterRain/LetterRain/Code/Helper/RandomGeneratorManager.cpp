@@ -11,6 +11,16 @@ void RandomGeneratorManager::Init()
 	srand(time(NULL));
 }
 
+int RandomGeneratorManager::GetRandomNumber()
+{
+	return rand();
+}
+
+int RandomGeneratorManager::GetRandomNumberInRange(int min, int max)
+{
+	return min + (rand() % max);
+}
+
 char RandomGeneratorManager::GetRandomLetter()
 {
 	return letters[rand() % ALPHABET_LENGTH];

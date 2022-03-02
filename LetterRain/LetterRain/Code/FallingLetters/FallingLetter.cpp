@@ -33,3 +33,14 @@ void FallingLetter::Draw()
 	ConsoleController::SetCursorPosition(position);
 	std::cout << character;
 }
+
+char FallingLetter::GetCharacter()
+{
+	return character;
+}
+
+void FallingLetter::LetterPressed()
+{
+	ConsoleController::SetCursorPosition(0, 30);
+	std::cout << "deleted " << character;
+}
