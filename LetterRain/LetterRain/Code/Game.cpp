@@ -5,6 +5,8 @@
 
 #include "ConsoleController.h"
 
+Game Game::instance;
+
 Game::Game()
 {
 	Init();

@@ -7,13 +7,14 @@
 class Game
 {
 public:
-	
+	static Game instance;
+
+	DrawManager* drawManager{};
 
 private:
-	TimeManager* timeManager;
-	DrawManager* drawManager;
-	UpdateManager* updateManager;
-	FallingLettersController* fallingLettersController;
+	TimeManager* timeManager{};
+	UpdateManager* updateManager{};
+	FallingLettersController* fallingLettersController{};
 	bool shouldDraw = false;
 
 public:

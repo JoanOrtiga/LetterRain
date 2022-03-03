@@ -23,20 +23,16 @@ void FallingLettersController::Update()
 		SpawnNewLetter();
 	}
 
-	if(GetKeyState('A') & 0x8000)
-	{
-		ConsoleController::SetCursorPosition(0, 30);
-		std::cout << "deleted " << clock();
-	}
-	
-
 	for (auto& fallingLetter : *fallingLetters) {
 		
 		if(GetKeyState(fallingLetter.GetCharacter()) & 0x8000)
 		{
 			fallingLetter.LetterPressed();
+			fallingLetters->push_back(fallingLetter);
 		}
 	}
+
+
 
 	for (auto& fallingLetter : *fallingLetters) {
 		fallingLetter.Update();

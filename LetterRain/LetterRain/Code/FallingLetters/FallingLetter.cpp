@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "../Game.h"
 #include "../ConsoleController.h";
 #include "../Managers/TimeManager.h";
 
@@ -41,6 +42,5 @@ char FallingLetter::GetCharacter()
 
 void FallingLetter::LetterPressed()
 {
-	ConsoleController::SetCursorPosition(0, 30);
-	std::cout << "deleted " << character;
+	Game::instance.drawManager->ResetColumn(position.X, position.Y);
 }

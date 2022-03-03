@@ -27,6 +27,7 @@ public:
 	static void CLS();
 	static void SetCursorPosition(short row, short col);
 	static void SetCursorPosition(COORD coord);
+	static void ResetColumn(short col);
 
 private:
 	static void GetWindowPos(int* x, int* y);

@@ -25,12 +25,12 @@ private:
 public:
 	DrawManager(FallingLettersController* _fallingLettersController);
 	void Draw();
+	void ResetColumn(short col, short currentRow);
 
 private:
 	void DrawPlayField();
 	void Fill(char character, int fill);
 
 	void UpdateConsole();
-
 };
 
