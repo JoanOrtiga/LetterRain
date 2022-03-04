@@ -9,7 +9,7 @@
 
 FallingLettersController::FallingLettersController()
 {
-	fallingLetters = new std::vector<FallingLetter>();
+	fallingLetters = new std::vector<FallingLetter*>();
 }
 
 FallingLettersController::~FallingLettersController()
@@ -23,15 +23,28 @@ void FallingLettersController::Update()
 		SpawnNewLetter();
 	}
 
-	for (auto& fallingLetter : *fallingLetters) {
+	/*for (auto& fallingLetter : *fallingLetters) {
 		
 		if(GetKeyState(fallingLetter.GetCharacter()) & 0x8000)
 		{
 			fallingLetter.LetterPressed();
-			fallingLetters->push_back(fallingLetter);
+
+			
+		}
+	}*/
+
+	std::vector<FallingLetter>::iterator deleteElement;
+	for (auto it = std::begin(*fallingLetters); it != std::end(*fallingLetters); ++it) {
+		if (GetKeyState(it->GetCharacter()) & 0x8000)
+		{
+			it->LetterPressed();
+			deleteElement = it;
 		}
 	}
 
+	int t = deleteElement - fallingLetters->begin();
+
+	fallingLetters->erase(t + fallingLetters->begin());
 
 
 	for (auto& fallingLetter : *fallingLetters) {

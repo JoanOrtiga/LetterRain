@@ -9,7 +9,7 @@ class FallingLettersController : public IGameObject
 public:
 	
 private:
-	std::vector<FallingLetter>* fallingLetters;
+	std::vector<FallingLetter*>* fallingLetters;
 	
 public:
 	FallingLettersController();

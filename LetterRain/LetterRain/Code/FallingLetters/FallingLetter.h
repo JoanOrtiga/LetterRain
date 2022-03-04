@@ -15,12 +15,12 @@ private:
 	const int spawnRow = 3;
 	
 public:
+	FallingLetter();
 	FallingLetter(char _character, int _column);
 	void Update() override;
 	void Draw() override;
 	char GetCharacter();
 	void LetterPressed();
-
 private:
 };
 

@@ -44,3 +44,20 @@ void FallingLetter::LetterPressed()
 {
 	Game::instance.drawManager->ResetColumn(position.X, position.Y);
 }
+
+/*
+bool FallingLetter::operator==(FallingLetter& rhs)
+{
+	if(position.X != rhs.position.X || position.Y != rhs.position.Y)
+	{
+		return false;
+	}
+		
+	if (character != rhs.character)
+		return false;
+
+	return true;
+}*/
+
+
+
