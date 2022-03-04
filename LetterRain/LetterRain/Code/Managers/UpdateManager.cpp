@@ -8,3 +8,8 @@ void UpdateManager::Update()
 {
 	fallingLettersController->Update();
 }
+
+void UpdateManager::DrawnUpdate()
+{
+	fallingLettersController->DrawnUpdate();
+}

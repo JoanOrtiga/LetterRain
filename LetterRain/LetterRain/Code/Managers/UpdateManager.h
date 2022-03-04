@@ -14,6 +14,7 @@ private:
 public:
 	UpdateManager(FallingLettersController* _fallingLettersController, TimeManager* _timeManager);
 	void Update();
+	void DrawnUpdate();
 
 private:
 	

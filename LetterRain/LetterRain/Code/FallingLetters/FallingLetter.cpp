@@ -3,21 +3,17 @@
 #include <iostream>
 
 #include "../Game.h"
-#include "../ConsoleController.h";
-#include "../Managers/TimeManager.h";
+#include "../ConsoleController.h"
 
-FallingLetter::FallingLetter(char _character, int _column)
+FallingLetter::FallingLetter(char _character, int _column, FallingLettersController* _fallingLettersController) :
+	character(_character), fallingLettersController(_fallingLettersController)
 {
-	character = _character;
 	position = { short(_column), (short)spawnRow};
 	lastPosition = position;
 }
 
 void FallingLetter::Update()
 {
-	ConsoleController::SetCursorPosition(0,0);
-	std::cout << lastPosition.X << " " << lastPosition.Y;
-
 	lastPosition = position;
 	position.Y++;
 }
@@ -42,7 +38,7 @@ char FallingLetter::GetCharacter()
 
 void FallingLetter::LetterPressed()
 {
-	Game::instance.drawManager->ResetColumn(position.X, position.Y);
+	fallingLettersController->DeleteColumn(position.X, position.Y);
 }
 
 /*

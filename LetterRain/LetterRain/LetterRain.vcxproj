@@ -153,6 +153,8 @@
     <ClCompile Include="Code\FallingLetters\FallingLettersController.cpp" />
     <ClCompile Include="Code\Helper\RandomGeneratorManager.cpp" />
     <ClCompile Include="Code\Engine\IGameObject.cpp" />
+    <ClCompile Include="Code\Managers\ScoreManager.cpp" />
+    <ClCompile Include="Code\Engine\InputController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\ConsoleController.h" />
@@ -164,6 +166,8 @@
     <ClInclude Include="Code\FallingLetters\FallingLettersController.h" />
     <ClInclude Include="Code\Helper\RandomGeneratorManager.h" />
     <ClInclude Include="Code\Engine\IGameObject.h" />
+    <ClInclude Include="Code\Managers\ScoreManager.h" />
+    <ClInclude Include="Code\Engine\InputController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -22,10 +22,13 @@ void DrawManager::UpdateConsole()
 
 void DrawManager::ResetColumn(short col, short currentRow)
 {
-	for (short i = 3; i < currentRow; i++)
+	ConsoleController::SetCursorPosition(startSpawningRow, col);
+	std::cout << flatHorizontal;
+
+	for (short i = startSpawningRow+1; i <= currentRow; i++)
 	{
 		ConsoleController::SetCursorPosition(i, col);
-		std::cout << "";
+		std::cout << " ";
 	}
 }
 

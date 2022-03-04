@@ -6,60 +6,83 @@
 #include "../Helper/RandomGeneratorManager.h"
 #include "../ConsoleController.h"
 #include "../Managers/TimeManager.h"
+#include "../Engine/InputController.h"
 
-FallingLettersController::FallingLettersController()
+FallingLettersController::FallingLettersController(DrawManager* drawManager) : fallingLetters(
+	new FallingLetter*[ConsoleController::consoleSizeX]), drawManager(drawManager)
 {
-	fallingLetters = new std::vector<FallingLetter*>();
+	for (short i = 0; i < ConsoleController::consoleSizeX; i++)
+	{
+		fallingLetters[i] = nullptr;
+	}
 }
 
 FallingLettersController::~FallingLettersController()
 {
+	
 }
 
-void FallingLettersController::Update()
+void FallingLettersController::DrawnUpdate()
 {
-	if(TimeManager::instance.GetElapsedTime() % 5 == 0)
+	if (TimeManager::instance.GetElapsedTime() % 5 == 0)
 	{
 		SpawnNewLetter();
 	}
 
-	/*for (auto& fallingLetter : *fallingLetters) {
-		
-		if(GetKeyState(fallingLetter.GetCharacter()) & 0x8000)
-		{
-			fallingLetter.LetterPressed();
-
-			
-		}
-	}*/
-
-	std::vector<FallingLetter>::iterator deleteElement;
-	for (auto it = std::begin(*fallingLetters); it != std::end(*fallingLetters); ++it) {
-		if (GetKeyState(it->GetCharacter()) & 0x8000)
-		{
-			it->LetterPressed();
-			deleteElement = it;
-		}
+	for (short i = 0; i < ConsoleController::consoleSizeX; i++)
+	{
+		if (fallingLetters[i] != nullptr)
+			fallingLetters[i]->Update();
 	}
+}
 
-	int t = deleteElement - fallingLetters->begin();
+void FallingLettersController::DeleteColumn(int col, int row)
+{
+	drawManager->ResetColumn(col, row);
+}
 
-	fallingLetters->erase(t + fallingLetters->begin());
-
-
-	for (auto& fallingLetter : *fallingLetters) {
-		fallingLetter.Update();
+void FallingLettersController::Update()
+{
+	for (short i = 0; i < ConsoleController::consoleSizeX; i++)
+	{
+		ConsoleController::SetCursorPosition(0, 15);
+		if (fallingLetters[i] != nullptr) {
+			if (InputController::IsKeyPressed(fallingLetters[i]->GetCharacter()))
+			{
+				fallingLetters[i]->LetterPressed();
+				delete fallingLetters[i];
+				fallingLetters[i] = nullptr;
+			}
+		}
 	}
 }
 
 void FallingLettersController::Draw()
 {
-	for (auto& fallingLetter : *fallingLetters) {
-		fallingLetter.Draw();
+	for (short i = 0; i < ConsoleController::consoleSizeX; i++)
+	{
+		if (fallingLetters[i] != nullptr) {
+			fallingLetters[i]->Draw();
+		}
 	}
 }
 
 void FallingLettersController::SpawnNewLetter()
 {
-	fallingLetters->push_back(*new FallingLetter(RandomGeneratorManager::GetRandomLetter(), RandomGeneratorManager::GetRandomNumberInRange(1, ConsoleController::consoleSizeX - 2)));
+	int tries = 0;
+	int randomColumn;
+
+	do
+	{
+		randomColumn = RandomGeneratorManager::GetRandomNumberInRange(1, ConsoleController::consoleSizeX - 2);
+		tries++;
+	} while (tries <= ConsoleController::consoleSizeX-2 || fallingLetters[randomColumn] != nullptr);
+
+	//Not able to generate letter bc playground is full
+	if(tries == ConsoleController::consoleSizeX-2) 
+		return;
+
+	fallingLetters[randomColumn] = new FallingLetter(RandomGeneratorManager::GetRandomLetter(), randomColumn, this);
 }
+
+

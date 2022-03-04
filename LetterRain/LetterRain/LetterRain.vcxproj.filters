@@ -45,6 +45,12 @@
     <ClCompile Include="Code\Engine\IGameObject.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Managers\ScoreManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Engine\InputController.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Game.h">
@@ -72,6 +78,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Code\Engine\IGameObject.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Managers\ScoreManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Engine\InputController.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

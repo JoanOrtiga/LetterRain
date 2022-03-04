@@ -5,18 +5,11 @@
 
 #include "ConsoleController.h"
 
-Game Game::instance;
-
 Game::Game()
 {
-	Init();
-}
-
-void Game::Init() {
 	ConsoleController::Init();
 
-	fallingLettersController = new FallingLettersController();
-
+	fallingLettersController = new FallingLettersController(drawManager);
 	timeManager = new TimeManager();
 	drawManager = new DrawManager(fallingLettersController);
 	updateManager = new UpdateManager(fallingLettersController, timeManager);
@@ -36,6 +29,7 @@ void Game::Loop() {
 	while (true) {
 		TimeLogic();
 		Update();
+		DrawnUpdate();
 		Draw();
 	}
 }
@@ -45,14 +39,19 @@ void Game::TimeLogic() {
 }
 
 void Game::Update() {
+	updateManager->Update();
+
+}
+
+void Game::DrawnUpdate() {
 	if (shouldDraw)
 	{
-		updateManager->Update();
+		updateManager->DrawnUpdate();
 	}
 }
 
 void Game::Draw() {
-	if(shouldDraw)
+	if (shouldDraw)
 	{
 		drawManager->Draw();
 	}

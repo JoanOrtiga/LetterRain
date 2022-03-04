@@ -2,6 +2,7 @@
 
 #include <Windows.h> //This has to remain here bc wincontypes uses windows.h
 #include <wincontypes.h>
+#include "FallingLettersController.h"
 #include "../Engine/IGameObject.h"
 
 class FallingLetter : public IGameObject
@@ -13,10 +14,11 @@ private:
 	COORD lastPosition = {};
 	COORD position = {};
 	const int spawnRow = 3;
+	FallingLettersController* fallingLettersController;
 	
 public:
 	FallingLetter();
-	FallingLetter(char _character, int _column);
+	FallingLetter(char _character, int _column, FallingLettersController* _fallingLettersController);
 	void Update() override;
 	void Draw() override;
 	char GetCharacter();

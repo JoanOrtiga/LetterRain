@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#define SHOW_CURSOR true
+
 short ConsoleController::consoleSizeX = 0;
 short ConsoleController::consoleSizeY = 0;
 
@@ -22,7 +24,8 @@ void ConsoleController::Init()
     consoleSizeX = desiredBufferSizeX;
     consoleSizeY = desiredBufferSizeY;
 
-    HideCursor();
+    if(SHOW_CURSOR)
+		HideCursor();
 }
 
 void ConsoleController::Delete()

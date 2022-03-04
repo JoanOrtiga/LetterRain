@@ -20,6 +20,8 @@ private:
 
 	const char wave = 126;				//~
 
+	const short startSpawningRow = 3;
+
 	FallingLettersController* fallingLettersController;
 
 public:
