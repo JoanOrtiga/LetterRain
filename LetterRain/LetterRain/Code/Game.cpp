@@ -2,22 +2,23 @@
 
 #include <iomanip>
 #include <iostream>
+#include <conio.h>
 
 #include "ConsoleController.h"
+#include "Engine/InputController.h"
 
-Game::Game()
+void Game::Init()
 {
 	ConsoleController::Init();
 
-	fallingLettersController = new FallingLettersController(drawManager);
-	timeManager = new TimeManager();
+	fallingLettersController = new FallingLettersController();
 	drawManager = new DrawManager(fallingLettersController);
-	updateManager = new UpdateManager(fallingLettersController, timeManager);
+	updateManager = new UpdateManager(fallingLettersController);
+	scoreManager = new ScoreManager(drawManager);
 }
 
 Game::~Game()
 {
-	delete timeManager;
 	delete drawManager;
 	delete updateManager;
 	delete fallingLettersController;
@@ -26,16 +27,52 @@ Game::~Game()
 }
 
 void Game::Loop() {
-	while (true) {
-		TimeLogic();
-		Update();
-		DrawnUpdate();
-		Draw();
+	bool exitGame = false;
+	while(!exitGame)
+	{
+		while (!gameLost) {
+
+			TimeLogic();
+			Update();
+			DrawnUpdate();
+			Draw();
+
+			if(InputController::IsKeyPressed(VK_ESCAPE))
+			{
+				exitGame = true;
+				break;
+			}
+		}
+
+		if (InputController::IsKeyPressed('C') || InputController::IsKeyPressed('c'))
+		{
+			NewGame();
+		}
+		else if (InputController::IsKeyPressed(VK_ESCAPE))
+			exitGame = true;
 	}
+	
+}
+
+void Game::NewGame()
+{
+	gameLost = false;
+
+	drawManager->NewGame();
+	scoreManager->NewGame();
+	fallingLettersController->NewGame();
+}
+
+void Game::Lost()
+{
+	gameLost = true;
+	drawManager->GameLost();
+	scoreManager->SetNewHighScore();
+	shouldDraw = false;
 }
 
 void Game::TimeLogic() {
-	shouldDraw = timeManager->ShouldExecuteNextFrame();
+	shouldDraw = TimeManager::GetInstance().ShouldExecuteNextFrame();
 }
 
 void Game::Update() {

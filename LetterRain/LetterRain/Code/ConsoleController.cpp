@@ -19,18 +19,19 @@ void ConsoleController::Init()
     Rect.Right = desiredBufferSizeX - 1;
 
     SetConsoleWindowInfo(stdHandle, TRUE, &Rect);
-    SetConsoleScreenBufferSize(stdHandle, { desiredBufferSizeX, desiredBufferSizeY });
+	SetConsoleScreenBufferSize(stdHandle, { desiredBufferSizeX, desiredBufferSizeY });
 
     consoleSizeX = desiredBufferSizeX;
     consoleSizeY = desiredBufferSizeY;
 
     if(SHOW_CURSOR)
 		HideCursor();
+
+    SetConsoleColor(Colors::WHITE);
 }
 
 void ConsoleController::Delete()
 {
-    delete stdHandle;
 }
 
 void ConsoleController::SetConsoleSize()
@@ -39,6 +40,11 @@ void ConsoleController::SetConsoleSize()
     int x, y;
     GetWindowPos(&x, &y);
     MoveWindow(hwnd, x, y, desiredConsoleSizeX, desiredConsoleSizeY,  TRUE);
+}
+
+void ConsoleController::SetConsoleColor(Colors color)
+{
+    SetConsoleTextAttribute(stdHandle, WORD(color));
 }
 
 void ConsoleController::GetWindowPos(int* x, int* y) {
@@ -78,7 +84,6 @@ bool ConsoleController::HasConsoleChangedSize()
 
 void ConsoleController::SetCursorPosition(short row, short col)
 {
-    std::cout.flush();
     SetConsoleCursorPosition(stdHandle, { col,row });
 }
 

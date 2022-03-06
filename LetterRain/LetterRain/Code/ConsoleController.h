@@ -5,6 +5,25 @@
 class ConsoleController
 {
 public:
+	enum class Colors {
+		BLACK = 0,
+		DARKBLUE,
+		DARKGREEN,
+		DARKCYAN,
+		DARKRED,
+		DARKMAGENTA,
+		DARKYELLOW,
+		DARKGRAY,
+		GRAY,
+		BLUE,
+		GREEN,
+		CYAN,
+		RED,
+		MAGENTA,
+		YELLOW,
+		WHITE
+	};
+
 	static short consoleSizeX;
 	static short consoleSizeY;
 
@@ -28,6 +47,7 @@ public:
 	static void SetCursorPosition(short row, short col);
 	static void SetCursorPosition(COORD coord);
 	static void ResetColumn(short col);
+	static void SetConsoleColor(Colors color);
 
 private:
 	static void GetWindowPos(int* x, int* y);
@@ -35,5 +55,6 @@ private:
 	static void HideCursor();
 	static void SetConsoleSize();
 	static bool HasConsoleChangedSize();
+	
 };
 

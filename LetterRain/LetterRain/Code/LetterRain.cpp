@@ -15,6 +15,6 @@ int main()
     std::cout << SEED;
 #endif
 
-    Game game;
-    game.Loop();
+    Game::GetInstance().Init();
+	Game::GetInstance().Loop();
 }

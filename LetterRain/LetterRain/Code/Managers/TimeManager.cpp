@@ -3,13 +3,6 @@
 #include <ctime>
 #include <iostream>
 
-TimeManager TimeManager::instance;
-
-TimeManager::TimeManager()
-{
-	elapsedTime = 0;
-}
-
 long TimeManager::GetElapsedTime() const
 {
 	return elapsedTime;
@@ -25,6 +18,7 @@ bool TimeManager::ShouldExecuteNextFrame()
 		elapsedTime = lastFrameTime / CLOCKS_PER_SEC;
 		lastFrameTime = clock();
 	}
+
 	return shouldExecuteNextFrame;
 }
 

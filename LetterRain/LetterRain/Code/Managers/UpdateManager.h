@@ -6,13 +6,16 @@
 class UpdateManager
 {
 public:
+	
 
 private:
+
 	TimeManager* timeManager;
 	FallingLettersController* fallingLettersController;
 
 public:
-	UpdateManager(FallingLettersController* _fallingLettersController, TimeManager* _timeManager);
+	UpdateManager(FallingLettersController* _fallingLettersController);
+	~UpdateManager();
 	void Update();
 	void DrawnUpdate();
 

@@ -1,34 +1,47 @@
 #include "FallingLetter.h"
 
-#include <iostream>
-
 #include "../Game.h"
-#include "../ConsoleController.h"
 
-FallingLetter::FallingLetter(char _character, int _column, FallingLettersController* _fallingLettersController) :
-	character(_character), fallingLettersController(_fallingLettersController)
+FallingLetter::FallingLetter(FallingLettersController* _fallingLettersController, char _character, int _column, int _barrierLevel) :
+	character(_character), fallingLettersController(_fallingLettersController), barrierLevel(_barrierLevel)
 {
 	position = { short(_column), (short)spawnRow};
-	lastPosition = position;
+}
+
+
+void FallingLetter::DrawnUpdate()
+{
+	position.Y++;
+
+	if(position.Y >= Settings::GetLoseRow())
+	{
+		Game::GetInstance().Lost();
+	}
 }
 
 void FallingLetter::Update()
 {
-	lastPosition = position;
-	position.Y++;
+	if (InputController::IsKeyPressed(character) && unpressed)
+	{
+		unpressed = false;
+		if(barrierLevel > 0)
+		{
+			barrierLevel--;
+		}
+		else
+		{
+			LetterPressed();
+		}
+	}
+	else if(!InputController::IsKeyPressed(character))
+	{
+		unpressed = true;
+	}
 }
 
 void FallingLetter::Draw()
 {
-	
-	if (lastPosition.Y != position.Y)
-	{
-		ConsoleController::SetCursorPosition(lastPosition);
-		std::cout << (char)250;
-	}
-
-	ConsoleController::SetCursorPosition(position);
-	std::cout << character;
+	Game::GetInstance().GetDrawManager()->DrawLetter(position, character, barrierLevel);
 }
 
 char FallingLetter::GetCharacter()
@@ -38,22 +51,11 @@ char FallingLetter::GetCharacter()
 
 void FallingLetter::LetterPressed()
 {
-	fallingLettersController->DeleteColumn(position.X, position.Y);
+	Game::GetInstance().GetDrawManager()->ResetColumn(position.X, position.Y);
+	fallingLettersController->SpawnExplosion(position);
+	Game::GetInstance().GetScoreManager()->AddScore();
+	fallingLettersController->DestroyLetter(position.X);
+
+
 }
-
-/*
-bool FallingLetter::operator==(FallingLetter& rhs)
-{
-	if(position.X != rhs.position.X || position.Y != rhs.position.Y)
-	{
-		return false;
-	}
-		
-	if (character != rhs.character)
-		return false;
-
-	return true;
-}*/
-
-
 

@@ -5,15 +5,20 @@
 class TimeManager
 {
 public:
-	static TimeManager instance;
-	int elapsedTime = clock();
+	int elapsedTime = 0;
 
 private:
 	clock_t lastFrameTime = clock();
-	int perFrameCycles = 400;
+	int perFrameCycles = 400;//400;
 
 public:
-	TimeManager();
+	static TimeManager& GetInstance()
+	{
+		static TimeManager instance;
+		return instance;
+	}
+
+	TimeManager(){}
 	clock_t GetElapsedTime() const;
 	bool ShouldExecuteNextFrame();
 	~TimeManager();
