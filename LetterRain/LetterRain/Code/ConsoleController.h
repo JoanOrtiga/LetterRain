@@ -1,36 +1,21 @@
 #pragma once
 
 #include <windows.h>
+#include <xstring>
+
+#include "Settings.h"
+#include "Engine/Colors.h"
 
 class ConsoleController
 {
 public:
-	enum class Colors {
-		BLACK = 0,
-		DARKBLUE,
-		DARKGREEN,
-		DARKCYAN,
-		DARKRED,
-		DARKMAGENTA,
-		DARKYELLOW,
-		DARKGRAY,
-		GRAY,
-		BLUE,
-		GREEN,
-		CYAN,
-		RED,
-		MAGENTA,
-		YELLOW,
-		WHITE
-	};
-
 	static short consoleSizeX;
 	static short consoleSizeY;
 
-	static const short desiredConsoleSizeX = 785;
-	static const short desiredConsoleSizeY = 650;
-	static const short desiredBufferSizeX = 94;
-	static const short desiredBufferSizeY = 33;
+	static const short desiredConsoleSizeX = Settings::consoleSize.X;
+	static const short desiredConsoleSizeY = Settings::consoleSize.Y;
+	static const short desiredBufferSizeX = Settings::consoleBufferSize.X;
+	static const short desiredBufferSizeY = Settings::consoleBufferSize.Y;
 
 private:
 	static HANDLE stdHandle;
@@ -44,6 +29,9 @@ public:
 	static void Delete();
 
 	static void CLS();
+	static void DrawAt(char character, COORD position);
+	static void DrawAt(std::string text, COORD position);
+	static void Fill(char character, int fillAmount);
 	static void SetCursorPosition(short row, short col);
 	static void SetCursorPosition(COORD coord);
 	static void ResetColumn(short col);

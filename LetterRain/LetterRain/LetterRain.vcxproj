@@ -159,6 +159,8 @@
     <ClCompile Include="Code\FallingLetters\Explosion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Engine\Colors.h" />
+    <ClInclude Include="Code\ConsoleController.fwd.h" />
     <ClInclude Include="Code\ConsoleController.h" />
     <ClInclude Include="Code\FallingLetters\FallingLettersController.fwd.h" />
     <ClInclude Include="Code\Managers\DrawManager.h" />

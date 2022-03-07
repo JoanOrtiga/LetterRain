@@ -1,6 +1,7 @@
 #pragma once
 
 #include <time.h>
+#include "../Settings.h"
 
 class TimeManager
 {
@@ -9,7 +10,7 @@ public:
 
 private:
 	clock_t lastFrameTime = clock();
-	int perFrameCycles = 400;//400;
+	int perFrameCycles = Settings::cyclesPerFrame;
 
 public:
 	static TimeManager& GetInstance()

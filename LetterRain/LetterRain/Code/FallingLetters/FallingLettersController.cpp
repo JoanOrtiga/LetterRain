@@ -112,7 +112,7 @@ void FallingLettersController::SpawnNewLetter()
 	if(tries == ConsoleController::consoleSizeX-2) 
 		return;
 
-	int barrierLevel = RandomGeneratorManager::GetRandomNumberInRange(0, 6) < 4 ? 0 : 1;
+	int barrierLevel = RandomGeneratorManager::GetRandomNumberInRange(0, 100) < Settings::shieldChance ? 0 : 1;
 
 	fallingLetters[randomColumn] = new FallingLetter(this, RandomGeneratorManager::GetRandomLetter(), randomColumn, barrierLevel);
 }

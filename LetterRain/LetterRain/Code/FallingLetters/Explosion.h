@@ -56,10 +56,6 @@ private:
 		}
 	 */
 	};
-	
-
-
-
 
 	int currentState = -1; //Initial state
 	COORD position;

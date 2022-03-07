@@ -3,6 +3,7 @@
 #include <xstring>
 
 #include "../FallingLetters/FallingLettersController.h"
+#include "../ConsoleController.h"
 #include "../Settings.h"
 
 class DrawManager
@@ -45,6 +46,9 @@ public:
 	void NewGame();
 	void Draw();
 	void ResetColumn(short col, short currentRow);
+	void DrawAt(std::string text, COORD position);
+	void DrawAt(char character, int x, int y);
+	void DrawAt(std::string text, int x, int y);
 	void DrawScore(int score, bool winning);
 	void DrawHighScore(int highScore);
 	void DrawTimePlayed();
@@ -56,6 +60,7 @@ public:
 private:
 	void DrawPlayField();
 	void Fill(char character, int fill);
+	void DrawAt(char character, COORD position);
 
 	void UpdateConsole();
 };

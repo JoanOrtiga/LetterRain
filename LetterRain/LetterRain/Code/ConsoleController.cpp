@@ -1,5 +1,6 @@
 #include "ConsoleController.h"
 
+#include <iomanip>
 #include <iostream>
 
 #define SHOW_CURSOR true
@@ -21,13 +22,13 @@ void ConsoleController::Init()
     SetConsoleWindowInfo(stdHandle, TRUE, &Rect);
 	SetConsoleScreenBufferSize(stdHandle, { desiredBufferSizeX, desiredBufferSizeY });
 
-    consoleSizeX = desiredBufferSizeX;
+	consoleSizeX = desiredBufferSizeX;
     consoleSizeY = desiredBufferSizeY;
 
     if(SHOW_CURSOR)
 		HideCursor();
 
-    SetConsoleColor(Colors::WHITE);
+    SetConsoleColor(Settings::playfieldColor);
 }
 
 void ConsoleController::Delete()
@@ -39,7 +40,7 @@ void ConsoleController::SetConsoleSize()
     HWND hwnd = GetConsoleWindow();
     int x, y;
     GetWindowPos(&x, &y);
-    MoveWindow(hwnd, x, y, desiredConsoleSizeX, desiredConsoleSizeY,  TRUE);
+    MoveWindow(hwnd, x, y, desiredConsoleSizeX, desiredConsoleSizeY,  true);
 }
 
 void ConsoleController::SetConsoleColor(Colors color)
@@ -108,4 +109,21 @@ void ConsoleController::CLS()
     FillConsoleOutputAttribute(stdHandle, csbi.wAttributes, length, topLeft, &written);
     // Move the cursor back to the top left for start again
     SetCursorPosition(topLeft);
+}
+
+void ConsoleController::DrawAt(char character, COORD position)
+{
+    SetCursorPosition(position);
+    std::cout << character;
+}
+
+void ConsoleController::DrawAt(std::string text, COORD position)
+{
+    SetCursorPosition(position);
+    std::cout << text;
+}
+
+void ConsoleController::Fill(char character, int fillAmount)
+{
+    std::cout << std::setfill(character) << std::setw(fillAmount - 1) << character;
 }

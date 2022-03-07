@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 #include "TimeManager.h"
 #include "../ConsoleController.h"
@@ -30,13 +31,11 @@ void DrawManager::UpdateConsole()
 
 void DrawManager::ResetColumn(short col, short currentRow)
 {
-	ConsoleController::SetCursorPosition(startSpawningRow, col);
-	std::cout << flatHorizontal;
+	DrawAt(flatHorizontal, col, startSpawningRow);
 
 	for (short i = startSpawningRow+1; i <= currentRow; i++)
 	{
-		ConsoleController::SetCursorPosition(i, col);
-		std::cout << " ";
+		DrawAt(' ', col, i);
 	}
 }
 
@@ -59,8 +58,7 @@ void DrawManager::DrawProtected(char character, COORD position)
 {
 	if (position.X < 1 || position.X > ConsoleController::consoleSizeX - 2 || position.Y <= startSpawningRow || position.Y >= ConsoleController::consoleSizeY - endRow)
 		return;
-	ConsoleController::SetCursorPosition(position);
-	std::cout << character;
+	DrawAt(character, position);
 }
 
 void DrawManager::DrawPlayField()
@@ -69,11 +67,14 @@ void DrawManager::DrawPlayField()
 	std::cout << cornerTopLeft;
 	Fill(flatHorizontal, ConsoleController::consoleSizeX-1);
 	std::cout << cornerTopRight;
-	
-	std::cout << flatVertical;
-	ConsoleController::SetCursorPosition(1,ConsoleController::consoleSizeX-1);
-	std::cout << flatVertical;
-	
+
+	for (short i = 1; i < startSpawningRow-1; i++)
+	{
+		std::cout << flatVertical;
+		ConsoleController::SetCursorPosition(i, ConsoleController::consoleSizeX - 1);
+		std::cout << flatVertical;
+	}
+
 	std::cout << verticalWithRight;
 	Fill(flatHorizontal, ConsoleController::consoleSizeX - 1);
 	std::cout << verticalWithLeft;
@@ -97,48 +98,38 @@ void DrawManager::DrawPlayField()
 	Fill(wave, ConsoleController::consoleSizeX-1);
 
 	//Draw Header
-	ConsoleController::SetCursorPosition(scorePosition.X, scorePosition.Y);
-	std::cout << scoreTxt;
-	ConsoleController::SetCursorPosition(highScorePosition.X, ConsoleController::consoleSizeX - highScorePosition.Y);
-	std::cout << highscoreTxt;
-
-	ConsoleController::SetCursorPosition(timePlayedPosition.X, ConsoleController::consoleSizeX - timePlayedPosition.Y / 2 - timeTxt.length() +4);
-	std::cout << timeTxt;
-}
-
-void DrawManager::Fill(char character, int fillAmount)
-{
-	std::cout << std::setfill(character) << std::setw(fillAmount-1) << character;
+	DrawAt(scoreTxt, scorePosition.Y, scorePosition.X);
+	DrawAt(highscoreTxt, (ConsoleController::consoleSizeX - highScorePosition.Y), highScorePosition.X);
+	DrawAt(timeTxt, (ConsoleController::consoleSizeX - timePlayedPosition.Y / 2 - timeTxt.length() + 4),  timePlayedPosition.X);
 }
 
 void DrawManager::DrawScore(int score, bool winning)
 {
-	winning ? ConsoleController::SetConsoleColor(ConsoleController::Colors::GREEN) : ConsoleController::SetConsoleColor(ConsoleController::Colors::RED);
-	ConsoleController::SetCursorPosition(scorePosition.X, scorePosition.Y + scoreTxt.length());
-	std::cout << score;
-	ConsoleController::SetConsoleColor(ConsoleController::Colors::WHITE);
+	winning ? ConsoleController::SetConsoleColor(Settings::scoreWinningColor) : ConsoleController::SetConsoleColor(Settings::scoreLoseColor);
+	DrawAt(std::to_string(score), scorePosition.Y + scoreTxt.length(), scorePosition.X);
+	ConsoleController::SetConsoleColor(Settings::playfieldColor);
 }
 
 void DrawManager::DrawHighScore(int highScore)
 {
-	ConsoleController::SetCursorPosition(highScorePosition.X, ConsoleController::consoleSizeX - highScorePosition.Y + highscoreTxt.length());
-	std::cout << highScore;
+	DrawAt(std::to_string(highScore),ConsoleController::consoleSizeX - highScorePosition.Y + highscoreTxt.length(), highScorePosition.X);
 }
 
 void DrawManager::DrawTimePlayed()
 {
-	ConsoleController::SetCursorPosition(highScorePosition.X, ConsoleController::consoleSizeX - timePlayedPosition.Y/2 + 4);
-	std::cout << TimeManager::GetInstance().GetElapsedTime();
+	DrawAt(std::to_string(TimeManager::GetInstance().GetElapsedTime()), ConsoleController::consoleSizeX - timePlayedPosition.Y / 2 + 4, highScorePosition.X);
 }
 
 void DrawManager::DrawLetter(COORD position, char character, int barrierLevel = 0)
 {
+	ConsoleController::SetConsoleColor(Settings::letterTrail);
 	for (short i = startSpawningRow; i < position.Y; i++)
 	{
 		ConsoleController::SetCursorPosition({position.X, i});
 		std::cout << trailPoint;
 	}
 
+	ConsoleController::SetConsoleColor(Settings::letterBarrier);
 	if(barrierLevel > 0)
 	{
 		COORD leftBarrierPos = { position.X - 1, position.Y };
@@ -152,22 +143,48 @@ void DrawManager::DrawLetter(COORD position, char character, int barrierLevel = 
 	DrawProtected(' ', cleanLeftBarrierPos);
 	DrawProtected(' ', cleanRightBarrierPos);
 
-	ConsoleController::SetCursorPosition(position);
-	std::cout << character;
+	ConsoleController::SetConsoleColor(Settings::letter);
+	
+	DrawAt(character, position);
+
+	ConsoleController::SetConsoleColor(Settings::playfieldColor);
 }
-
-
 
 void DrawManager::GameLost()
 {
 	ConsoleController::SetCursorPosition(ConsoleController::consoleSizeY / 2, ConsoleController::consoleSizeX / 2 - 4);
-	ConsoleController::SetConsoleColor(ConsoleController::Colors::RED);
+	ConsoleController::SetConsoleColor(Settings::endGameTextcolor);
 	std::cout << "Game Lost";
 
 	std::string exitMessage = "Press button 'C' to continue, or ESC, to close";
 	ConsoleController::SetCursorPosition(ConsoleController::consoleSizeY / 2 + 2, ConsoleController::consoleSizeX / 2 - exitMessage.length() / 2);
 	std::cout << exitMessage;
 
-	ConsoleController::SetConsoleColor(ConsoleController::Colors::WHITE);
+	ConsoleController::SetConsoleColor(Settings::playfieldColor);
 }
 
+
+void DrawManager::Fill(char character, int fillAmount)
+{
+	ConsoleController::Fill(character, fillAmount);
+}
+
+void DrawManager::DrawAt(char character, COORD position)
+{
+	ConsoleController::DrawAt(character, position);
+}
+
+void DrawManager::DrawAt(std::string text, COORD position)
+{
+	ConsoleController::DrawAt(text, position);
+}
+
+void DrawManager::DrawAt(char character, int x, int y)
+{
+	ConsoleController::DrawAt(character, { short(x), short(y) });
+}
+
+void DrawManager::DrawAt(std::string text, int x, int y)
+{
+	ConsoleController::DrawAt(text, { short(x), short(y) });
+}
