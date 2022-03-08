@@ -15,7 +15,7 @@ bool TimeManager::ShouldExecuteNextFrame()
 	if (timeBetweenFrames >= perFrameCycles)
 	{
 		shouldExecuteNextFrame = true;
-		elapsedTime = lastFrameTime / CLOCKS_PER_SEC;
+		elapsedTime = lastFrameTime / CLOCKS_PER_SEC ;
 		lastFrameTime = clock();
 	}
 

@@ -22,6 +22,7 @@ public:
 	TimeManager(){}
 	clock_t GetElapsedTime() const;
 	bool ShouldExecuteNextFrame();
+	void NewGame();
 	~TimeManager();
 };
 

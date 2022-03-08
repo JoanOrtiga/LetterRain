@@ -54,7 +54,7 @@ void FallingLettersController::NewGame()
 
 void FallingLettersController::DrawnUpdate()
 {
-	if (TimeManager::GetInstance().GetElapsedTime() % 1 == 0)
+	if (TimeManager::GetInstance().GetElapsedTime() % Settings::GetTimeBetweenSpawnsByTime(TimeManager::GetInstance().GetElapsedTime()) == 0)
 	{
 		SpawnNewLetter();
 	}

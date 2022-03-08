@@ -11,7 +11,7 @@ public:
 
 	static constexpr int endGameRow = 3; //Minus ConsoleHeight.
 	static constexpr int spawnRow = 3;
-	static constexpr int shieldChance = 50;
+	static constexpr int shieldChance = 65;
 
 	static constexpr COORD consoleBufferSize = { 94, 33 };
 	static constexpr COORD consoleSize = { 780,570 };
@@ -25,6 +25,11 @@ public:
 	static constexpr Colors letterTrail = Colors::CYAN;
 	static constexpr Colors letter = Colors::WHITE;
 
+#define TIME_BETWEEN_SPAWNS_NUMBER 3
+	//First value is Time (current time has to be less than). second spawnTime
+	static constexpr int timeBetweenSpawns[TIME_BETWEEN_SPAWNS_NUMBER][2] = {{7,3}, {12,2}, {18,1}};
+
 	static int GetLoseRow();
+	static int GetTimeBetweenSpawnsByTime(long time);
 };
 

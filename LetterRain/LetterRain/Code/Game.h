@@ -13,7 +13,6 @@ public:
 
 private:
 	DrawManager* drawManager;
-	TimeManager* timeManager;
 	UpdateManager* updateManager;
 	FallingLettersController* fallingLettersController;
 	ScoreManager* scoreManager;
